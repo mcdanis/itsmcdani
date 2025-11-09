@@ -19,5 +19,5 @@ jobs:
           server: ftp.itsmcdani.com
           username: ${{ secrets.USER }}
           password: ${{ secrets.PW }}
-          local-dir: .
+          local-dir: ./
           server-dir: /public_html/
