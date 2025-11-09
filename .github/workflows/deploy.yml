@@ -1,21 +1,17 @@
-name: 🚀 Deploy to Hosting
+name: 🚀 Deploy Dist Folder to Hosting
 
 on:
   push:
     branches:
-      - main # branch utama kamu
+      - main # setiap kali kamu push ke branch main, auto upload ke hosting
 
 jobs:
   ftp-deploy:
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout Repo
-        uses: actions/checkout@v3
-
-      - name: Build Its McDani
-        run: |
-          npm install
-          npm run build
+        uses: actions/checkout@v4
 
       - name: Upload via FTP
         uses: SamKirkland/FTP-Deploy-Action@v4.3.4
@@ -23,5 +19,5 @@ jobs:
           server: ftp.itsmcdani.com
           username: ${{ secrets.USER }}
           password: ${{ secrets.PW }}
-          local-dir: dist
+          local-dir: .
           server-dir: /public_html/
